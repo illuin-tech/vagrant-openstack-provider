@@ -253,6 +253,11 @@ module VagrantPlugins
       # @return [Boolean]
       attr_accessor :ssl_verify_peer
 
+      # Specify the version of ip that should be used to connect to the machine
+      #
+      # @reeturn [Integer]
+      attr_accessor :ip_version
+
       def initialize
         @password = UNSET_VALUE
         @openstack_compute_url = UNSET_VALUE
@@ -302,6 +307,7 @@ module VagrantPlugins
         @use_legacy_synced_folders = UNSET_VALUE
         @ssl_ca_file = UNSET_VALUE
         @ssl_verify_peer = UNSET_VALUE
+        @ip_version = UNSET_VALUE
       end
 
       def merge(other)
@@ -374,6 +380,7 @@ module VagrantPlugins
         @user_data = nil if @user_data == UNSET_VALUE
         @metadata = nil if @metadata == UNSET_VALUE
         @ssh_disabled = false if @ssh_disabled == UNSET_VALUE
+        @ip_version = nil if @ip_version == UNSET_VALUE
 
         # The value of use_legacy_synced_folders is used by action chains
         # to determine which synced folder implementation to run.
