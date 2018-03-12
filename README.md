@@ -60,7 +60,7 @@ Vagrant.configure('2') do |config|
 
   config.ssh.username = 'stack'
 
-  config.vm.provider :openstack do |os|
+  config.vm.provider :openstack_illuin do |os|
     os.openstack_auth_url = 'http://keystone-server.net/v2.0/tokens'
     os.username           = 'openstackUser'
     os.password           = 'openstackPassword'
@@ -125,7 +125,7 @@ for any reason, it will try with the second one and so on. Finally, if it does n
 the list, it will fail.
 
 ```ruby
-config.vm.provider :openstack do |os|
+config.vm.provider :openstack_illuin do |os|
   ...
   os.floating_ip_pool = ['External-Network-01', 'External-Network-02']
   ...
@@ -155,7 +155,7 @@ address that will be assigned to the instance if you need a static address or if
 Here's an example which connect the instance to six Networks :
 
 ```ruby
-config.vm.provider :openstack do |os|
+config.vm.provider :openstack_illuin do |os|
   ...
   os.networks = [
     'net-name-01',
@@ -192,7 +192,7 @@ you have to use only ids. Optionally, you can specify the device that will be as
 Here comes an example that show six volumes attached to a server :
 
 ```ruby
-config.vm.provider :openstack do |os|
+config.vm.provider :openstack_illuin do |os|
   ...
   os.volumes = [
     '619e027c-f4a9-493d-8c15-c89de81cb949',
@@ -225,7 +225,7 @@ end
 Here comes an example that show two stacks :
 
 ```ruby
-config.vm.provider :openstack do |os|
+config.vm.provider :openstack_illuin do |os|
  ...
 os.stacks = [
   {
@@ -258,7 +258,7 @@ If neither `keypair_name` nor `public_key_path` are set, vagrant will generate a
 
 ```ruby
 Vagrant.configure("2") do |config|
-  config.vm.provider :openstack do |provider, override|
+  config.vm.provider :openstack_illuin do |provider, override|
     override.vm.synced_folder '.', '/vagrant', type: 'rsync',
       rsync__exclude: ['some/folder/to/exclude']
   end
